@@ -1,3 +1,5 @@
+import { Rectangle, Circle } from "/lib/index";
+
 class CanvasRenderer {
   constructor(configObj) {
     const { width, height } = configObj;
@@ -31,8 +33,22 @@ class CanvasRenderer {
           ctx.fillText(node.text, 0, 0);
         }
 
-        //if container - render nodes
+        if (node instanceof Rectangle) {
+          const { width, height, fillStyle } = node;
+          ctx.fillStyle = fillStyle;
+          ctx.fillRect(0, 0, width, height);
+        }
+
+        if (node instanceof Circle) {
+          const { radius, fillStyle, position } = node;
+          ctx.fillStyle = fillStyle;
+          ctx.beginPath();
+          ctx.arc(position.x, position.y, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
         if (node.nodes) {
+          //if container - render nodes
           renderRecursive(node);
         }
         ctx.restore();

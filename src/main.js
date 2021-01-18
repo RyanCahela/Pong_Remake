@@ -1,4 +1,5 @@
-import { Container, CanvasRenderer, Text } from "/lib/index";
+import { Circle } from "./lib";
+import { Container, CanvasRenderer, Text, Rectangle } from "/lib/index";
 
 const WIDTH = 640;
 const HEIGHT = 480;
@@ -21,8 +22,12 @@ const initialPosition = {
   y: HEIGHT / 2,
 };
 const hello = new Text("Hello World!", helloStyles, initialPosition);
+const player = new Rectangle();
+const ball = new Circle();
 
 scene.add(hello);
+scene.add(player);
+scene.add(ball);
 
 let timeOfLastFrame = 0;
 let deltaTime = 0;
