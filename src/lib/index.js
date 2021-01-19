@@ -3,5 +3,6 @@ import CanvasRenderer from "/lib/CanvasRenderer";
 import Text from "/lib/Text";
 import Rectangle from "/lib/Rectangle";
 import Circle from "/lib/Circle";
+import Game from "/lib/Game";
 
-export { Container, CanvasRenderer, Text, Rectangle, Circle };
+export { Container, CanvasRenderer, Text, Rectangle, Circle, Game };

@@ -11,12 +11,10 @@ class Level extends Container {
   }
 
   flipDirectionX(node) {
-    console.log("flipX");
     node.direction.x = -node.direction.x;
   }
 
   flipDirectionY(node) {
-    console.log("flipY");
     node.direction.y = -node.direction.y;
   }
 
