@@ -1,4 +1,5 @@
-import { Container } from "/lib/index";
+import { Rectangle } from "../lib";
+import { Container, Circle } from "/lib/index";
 
 class Level extends Container {
   constructor(configObj) {
@@ -28,10 +29,12 @@ class Level extends Container {
       flipDirectionY,
     } = this;
     this.nodes.forEach((node) => {
-      if (node.position.x <= leftBound) flipDirectionX(node);
-      if (node.position.x >= rightBound) flipDirectionX(node);
-      if (node.position.y <= topBound) flipDirectionY(node);
-      if (node.position.y >= bottomBound) flipDirectionY(node);
+      if (node instanceof Circle) {
+        if (node.position.x <= leftBound) flipDirectionX(node);
+        if (node.position.x >= rightBound) flipDirectionX(node);
+        if (node.position.y <= topBound) flipDirectionY(node);
+        if (node.position.y >= bottomBound) flipDirectionY(node);
+      }
     });
     super.update(deltaTime, currentTime);
   }

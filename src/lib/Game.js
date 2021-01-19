@@ -9,6 +9,7 @@ class Game {
       width,
       height,
     });
+
     this.scene = new Container();
     document.getElementById(parentElementId).appendChild(this.renderer.view);
 
@@ -25,10 +26,12 @@ class Game {
   }
 
   run(gameUpdate = () => {}) {
+    const STEP = 1 / 60;
+    const MAX_STEP = STEP * 5;
     const loop = (ms) => {
       requestAnimationFrame(loop);
       const currentTime = ms / 1000;
-      this.deltaTime = currentTime - this.timeOfLastFrame;
+      this.deltaTime = Math.min(currentTime - this.timeOfLastFrame, MAX_STEP);
       this.timeOfLastFrame = currentTime;
 
       this.scene.update(this.deltaTime, currentTime);
