@@ -29,11 +29,23 @@ class Level extends Container {
       flipDirectionY,
     } = this;
     this.nodes.forEach((node) => {
+      //circle collision detection
       if (node instanceof Circle) {
+        //edge of map collision detection
         if (node.position.x <= leftBound) flipDirectionX(node);
         if (node.position.x >= rightBound) flipDirectionX(node);
         if (node.position.y <= topBound) flipDirectionY(node);
         if (node.position.y >= bottomBound) flipDirectionY(node);
+      }
+
+      //rectangle collision detection
+      if (node instanceof Rectangle) {
+        if (node.position.y <= topBound) {
+          node.position.y = topBound;
+        }
+        if (node.position.y >= bottomBound - node.height) {
+          node.position.y = bottomBound - node.height;
+        }
       }
     });
     super.update(deltaTime, currentTime);

@@ -34,8 +34,8 @@ class Game {
       this.deltaTime = Math.min(currentTime - this.timeOfLastFrame, MAX_STEP);
       this.timeOfLastFrame = currentTime;
 
-      this.scene.update(this.deltaTime, currentTime);
       gameUpdate(this.deltaTime, currentTime);
+      this.scene.update(this.deltaTime, currentTime);
       this.renderer.render(this.scene);
     };
     requestAnimationFrame(loop);

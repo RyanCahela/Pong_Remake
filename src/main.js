@@ -20,6 +20,5 @@ level.add(playerPaddle);
 game.add(level);
 
 game.run((deltaTime, currentTime) => {
-  playerPaddle.position.x = controls.position.x;
-  playerPaddle.position.y = controls.position.y;
+  playerPaddle.position.y = controls.position.y - 50;
 });

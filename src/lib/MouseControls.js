@@ -32,14 +32,9 @@ class MouseControls {
 
   setMousePositionFromEvent({ clientX, clientY }) {
     const { element, position } = this;
-    console.dir(element);
     const rect = element.getBoundingClientRect();
-    const xRatio = element.width / element.clientWidth;
-    const yRatio = element.height / element.clientHeight;
-    console.log(xRatio, yRatio);
-    //position.x = (clientX - rect.left) * xRatio;
-    position.y = (clientY - rect.top) * yRatio;
-    console.log(position);
+    position.x = clientX - rect.left;
+    position.y = clientY - rect.top;
   }
 
   update() {
