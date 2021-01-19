@@ -25,6 +25,11 @@ class CanvasRenderer {
           );
         }
 
+        if (node.scale) {
+          const { x, y } = node.scale;
+          ctx.scale(x, y);
+        }
+
         if (node.text) {
           const { fill, align, font } = node.style;
           if (fill) ctx.fillStyle = fill;
@@ -43,7 +48,7 @@ class CanvasRenderer {
           const { radius, fillStyle, position } = node;
           ctx.fillStyle = fillStyle;
           ctx.beginPath();
-          ctx.arc(position.x, position.y, radius, 0, Math.PI * 2);
+          ctx.arc(0, 0, radius, 0, Math.PI * 2);
           ctx.fill();
         }
 

@@ -1,7 +1,7 @@
 const defaltConfig = {
   fillStyle: "red",
   radius: 10,
-  spawnPosition: { x: 100, y: 100 },
+  spawnPosition: { x: 10, y: 10 },
 };
 
 class Circle {
@@ -10,6 +10,7 @@ class Circle {
     this.position = spawnPosition;
     this.radius = radius;
     this.fillStyle = fillStyle;
+    this.scale = { x: 1, y: 1 };
   }
 }
 

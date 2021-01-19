@@ -1,9 +1,9 @@
-import { Circle } from "./lib";
-import { Container, CanvasRenderer, Text, Rectangle } from "/lib/index";
+import Container from "./lib/Container";
+import { Level, Ball } from "/entities/index";
+import { CanvasRenderer } from "/lib/index";
 
 const WIDTH = 640;
 const HEIGHT = 480;
-const scene = new Container();
 const renderer = new CanvasRenderer({
   width: WIDTH,
   height: HEIGHT,
@@ -11,23 +11,17 @@ const renderer = new CanvasRenderer({
 const board = document.getElementById("board");
 board.appendChild(renderer.view);
 
-const helloStyles = {
-  fill: "red",
-  align: "center",
-  font: "20pt monospace",
-};
+const level = new Level({
+  width: WIDTH,
+  height: HEIGHT,
+});
+const ball = new Ball();
+const scene = new Container();
 
-const initialPosition = {
-  x: WIDTH / 2,
-  y: HEIGHT / 2,
-};
-const hello = new Text("Hello World!", helloStyles, initialPosition);
-const player = new Rectangle();
-const ball = new Circle();
+level.add(ball);
+scene.add(level);
 
-scene.add(hello);
-scene.add(player);
-scene.add(ball);
+console.log(scene);
 
 let timeOfLastFrame = 0;
 let deltaTime = 0;
@@ -38,8 +32,8 @@ function loop(ms) {
   deltaTime = currentTime - timeOfLastFrame;
   timeOfLastFrame = currentTime;
 
-  scene.update(deltaTime, currentTime);
-  renderer.render(scene);
+  level.update(deltaTime, currentTime);
+  renderer.render(level);
 }
 
 requestAnimationFrame(loop);

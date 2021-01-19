@@ -7,6 +7,12 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   justify-content: space-around;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+* {
+  box-sizing: inherit;
 }
 
 h2 {
